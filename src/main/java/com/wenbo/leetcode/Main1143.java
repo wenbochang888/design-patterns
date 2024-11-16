@@ -1,7 +1,5 @@
 package com.wenbo.leetcode;
 
-import com.alibaba.fastjson2.JSON;
-
 public class Main1143 {
 	public int longestCommonSubsequence(String s1, String s2) {
 
@@ -19,7 +17,6 @@ public class Main1143 {
 
 
 		for (int i = 0; i < dp.length; i++) {
-			System.out.println(JSON.toJSONString(dp[i]));
 		}
 
 		return dp[s1.length()][s2.length()];

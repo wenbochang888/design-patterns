@@ -3,7 +3,7 @@ package com.wenbo.DesignPattern.pattern.创建型.builder;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.wenbo.DesignPattern.pattern.Car;
-import com.wenbo.DesignPattern.utils.GsonUtil;
+import com.wenbo.DesignPattern.utils.GsonUtils;
 
 public class Main {
 	public static void main(String[] args) {
@@ -11,12 +11,12 @@ public class Main {
 		// 1. 制造一个BMW
 		CarDirector director = new CarDirector(new BMWCarBuilder());
 		Car bmwCar = director.constructCar();
-		System.out.println(GsonUtil.toJson(bmwCar));
+		System.out.println(GsonUtils.toJson(bmwCar));
 
 		// 2. 制造一个小米汽车
 		CarDirector director1 = new CarDirector(new MiCarBuilder());
 		Car miCar = director1.constructCar();
-		System.out.println(GsonUtil.toJson(miCar));
+		System.out.println(GsonUtils.toJson(miCar));
 
 
 

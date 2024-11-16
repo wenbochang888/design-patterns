@@ -1,6 +1,7 @@
 package com.wenbo.leetcode;
 
-import com.tianya.util.GsonUtils;
+
+import com.wenbo.DesignPattern.utils.GsonUtils;
 
 import java.util.*;
 

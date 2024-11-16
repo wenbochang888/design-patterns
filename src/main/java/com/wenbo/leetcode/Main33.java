@@ -1,8 +1,6 @@
 package com.wenbo.leetcode;
 
 
-import com.alibaba.fastjson.JSON;
-
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Main33 {
@@ -13,9 +11,6 @@ public class Main33 {
 			a[i] = ThreadLocalRandom.current().nextInt(10);
 		}
 
-		System.out.println(JSON.toJSONString(a));
-		new Main33().sortArray(a);
-		System.out.println(JSON.toJSONString(a));
 
 	}
 

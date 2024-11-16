@@ -10,8 +10,8 @@ import org.slf4j.LoggerFactory;
  * @author changwenbo
  * @date 2024/6/17 19:40
  */
-public class GsonUtil {
-    private static final Logger logger = LoggerFactory.getLogger(GsonUtil.class);
+public class GsonUtils {
+    private static final Logger logger = LoggerFactory.getLogger(GsonUtils.class);
 
     private static Gson gson = new GsonBuilder().enableComplexMapKeySerialization()
             .disableHtmlEscaping()

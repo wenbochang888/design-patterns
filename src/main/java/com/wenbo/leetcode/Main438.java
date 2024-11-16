@@ -1,7 +1,5 @@
 package com.wenbo.leetcode;
 
-import com.alibaba.fastjson.JSON;
-
 import java.util.*;
 
 /**
@@ -13,7 +11,6 @@ public class Main438 {
 	public static void main(String[] args) {
 		String s = "cbaebabacd";
 		String p = "abc";
-		System.out.println(JSON.toJSONString(new Main438().findAnagrams(s, p)));
 	}
 
 
