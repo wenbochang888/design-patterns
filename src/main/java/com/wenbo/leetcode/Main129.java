@@ -1,25 +1,11 @@
 package com.wenbo.leetcode;
 
-import cn.hutool.core.date.LocalDateTimeUtil;
-
-import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class Main129 {
 
 	public static void main(String[] args) {
-
-		LocalDateTime start = LocalDateTime.of(2022, 10, 1, 0, 0, 0);
-		LocalDateTime end = LocalDateTime.of(2022, 10, 1, 10, 0, 0);
-		long days = LocalDateTimeUtil.between(start, end, ChronoUnit.DAYS);
-		System.out.println(days);
-		if (end.isAfter(start.plusDays(days))) {
-			days += 1;
-		}
-
-		System.out.println(days);
 	}
 
 

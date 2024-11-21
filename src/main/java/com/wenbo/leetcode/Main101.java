@@ -10,14 +10,19 @@ public class Main101 {
 			return true;
 		}
 
-
-
-		return false;
+		return symmetric(root.left, root.right);
 	}
 
-	public TreeNode symmetric(TreeNode root) {
-
-
-		return null;
+	public boolean symmetric(TreeNode left, TreeNode right) {
+		if (left == null && right == null) {
+			return true;
+		}
+		if (left == null || right == null) {
+			return false;
+		}
+		if (left.val != right.val) {
+			return false;
+		}
+		return symmetric(left.left, right.right) && symmetric(left.right, right.left);
 	}
 }
