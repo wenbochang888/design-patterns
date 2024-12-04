@@ -1,7 +1,10 @@
 package com.wenbo.DesignPattern.pattern.行为模式.chain;
 
+import com.google.common.collect.Lists;
 import com.wenbo.DesignPattern.pattern.Cat;
 import com.wenbo.DesignPattern.pattern.Dog;
+
+import java.util.List;
 
 public class Main {
 	public static void main(String[] args) {
@@ -9,12 +12,16 @@ public class Main {
 		Handler catHandler = new CatHandler();
 		// 2. dog
 		Handler dogHandler = new DogHandler();
-		// 3. 设置下一个handler
-		catHandler.setNextHandler(dogHandler);
+
+		List<Handler> handlers = Lists.newArrayList(catHandler, dogHandler);
 
 
-		catHandler.handler(new Cat());
-		System.out.println("==============");
-		catHandler.handler(new Dog());
+		TxnContext context = new TxnContext();
+		context.setCat(new Cat());
+		context.setDog(new Dog());
+
+		for (Handler handler : handlers) {
+			handler.handler(context);
+		}
 	}
 }

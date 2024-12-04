@@ -1,44 +1,34 @@
 package com.wenbo.DesignPattern.pattern.行为模式.chain;
 
-import com.wenbo.DesignPattern.pattern.Animal;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public abstract class AbstractHandler implements Handler {
-	private Handler nextHandler;
 
 	@Override
-	public boolean handler(Animal animal) {
+	public boolean handler(TxnContext context) {
 
 		try {
-			preHandler(animal);
-			boolean res = onHandler(animal);
+			preHandler(context);
+			boolean res = onHandler(context);
 			// 如果return true，则继续执行下一个handler
-			if (res && nextHandler != null) {
-				return nextHandler.handler(animal);
-			}
+			return res;
 		} catch (Exception e) {
 			log.error("handler error", e);
+			return false;
 		} finally {
-			postHandler(animal);
+			postHandler(context);
 		}
-		return false;
 	}
 
 
-	@Override
-	public void setNextHandler(Handler nextHandler) {
-		this.nextHandler = nextHandler;
+	protected abstract boolean onHandler(TxnContext context);
+
+	protected void preHandler(TxnContext context) {
+		log.info("preHandler animal = {}", context);
 	}
 
-
-	protected abstract boolean onHandler(Animal animal);
-
-	protected void preHandler(Animal animal) {
-		log.info("preHandler animal = {}", animal.getType());
-	}
-
-	protected void postHandler(Animal animal) {
-		log.info("postHandler animal = {}", animal.getType());
+	protected void postHandler(TxnContext context) {
+		log.info("postHandler animal = {}", context);
 	}
 }

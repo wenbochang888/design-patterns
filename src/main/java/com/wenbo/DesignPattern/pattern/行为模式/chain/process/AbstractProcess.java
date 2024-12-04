@@ -3,29 +3,41 @@ package com.wenbo.DesignPattern.pattern.行为模式.chain.process;
 import com.wenbo.DesignPattern.pattern.行为模式.chain.*;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class AbstractProcess implements BaseProcess {
-	private Handler handler = null;
+	private List<Handler> handlerList = new ArrayList<>();
+
+
+	@Override
+	public void process(TxnContext context) {
+		for (Handler handler : getHandlerList()) {
+			handler.handler(context);
+		}
+	}
 
 	@PostConstruct
-	public void getHandlerList() {
+	public void initHandlerList() {
 		// 可以从数据库中 也可以从其他地方去获取
 
 		// 1. cat
 		Handler catHandler = new CatHandler();
 		// 2. dog
 		Handler dogHandler = new DogHandler();
-		// 3. 设置下一个handler
-		catHandler.setNextHandler(dogHandler);
 
-		setHandler(catHandler);
+		List<Handler> handlers = new ArrayList<>();
+		handlers.add(catHandler);
+		handlers.add(dogHandler);
+		setHandlerList(handlers);
 	}
 
-	public Handler getHandler() {
-		return handler;
+	public List<Handler> getHandlerList() {
+		return handlerList;
 	}
 
-	public void setHandler(Handler handler) {
-		this.handler = handler;
+	public void setHandlerList(List<Handler> handlerList) {
+		// handlerList 不需要排序，按需进入加入排序
+		this.handlerList = handlerList;
 	}
 }
